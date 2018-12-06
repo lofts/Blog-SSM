@@ -1,0 +1,210 @@
+#maintop {
+    width: 70%;
+    height: 100%;
+    text-align: center;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(../img/img_main_banner.jpg);
+    background-size: 100%, 100%;
+}
+
+#mainlogo {
+    width: 400px;
+    height: 100%;
+    position: absolute;
+}
+
+#logo {
+    width: 400px;
+    height: 100px;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+
+#mainnav {
+    width: 700px;
+    height: 100%;
+    float: right;
+}
+
+#navigation {
+    width: 700px;
+    height: 30px;
+    bottom: 0px;
+    right: 0px;
+    position: absolute;
+}
+
+#navigation div {
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+}
+
+#navigation a {
+    font-size: 18px;
+    color: white;
+}
+
+#mainleftbody {
+    background-color: aliceblue;
+    margin: 0px;
+    padding: 0px;
+}
+
+#mainleft {
+    width: 220px;
+    height: 500px;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+
+#headdiv {
+    width: 200px;
+    height: 100px;
+}
+
+#headimg {
+    width: 98px;
+    height: 98px;
+    border-color: darkgrey;
+    border-radius: 8px;
+    border-width: 2px;
+}
+
+#headdiv a {
+    position: relative;
+    font-size: 10px;
+    color: blue;
+    margin-left: 5px;
+    right: 0px;
+    bottom: 0px;
+}
+
+.userinfo {
+    position: relative;
+    width: 200px;
+    height: auto;
+    margin-top: 20px;
+}
+
+.tag {
+    width: 60px;
+    height: auto;
+    display: inline-block;
+    font-size: 14px;
+    color: grey;
+}
+
+.userinfo .uservalue {
+    width: 140px;
+    height: auto;
+    display: -moz-inline-box;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: normal;
+    color: black;
+}
+
+#maincontent {
+    width: 700px;
+    height: 1000px;
+    padding: 50px;
+}
+
+#editheaddiv {
+    width: 800px;
+    height: auto;
+    margin: 0px;
+    padding: 0px;
+}
+
+#imagefile {
+    display: none;
+    vertical-align: bottom;
+}
+
+#imagepath {
+    margin-left: 10px;
+    vertical-align: bottom;
+    font-size: 14px;
+    height: 20px;
+    width: auto;
+}
+
+.bluebutton {
+    margin-left: 5px;
+    vertical-align: bottom;
+    color: white;
+    border-width: 0px;
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #46A5FF;
+}
+
+.userinfoedit {
+    margin-top: 20px;
+}
+
+.inputedit {
+    margin-left: 20px;
+    font-size: 14px;
+    color: black;
+    height: 20px;
+    width: auto;
+    vertical-align: middle;
+}
+
+.radiovalue {
+    font-size: 14px;
+    color: black;
+    vertical-align: middle;
+}
+
+.selectedit {
+    margin-left: 20px;
+    font-size: 14px;
+    height: 30px;
+    width: 320px;
+    vertical-align: middle;
+}
+
+.selectcityedit {
+    margin-left: 20px;
+    font-size: 14px;
+    height: 30px;
+    width: 80px;
+    vertical-align: middle;
+}
+
+#hobbydiv {
+    margin-left: 80px;
+    top: 0px;
+    display: inline-block;
+}
+
+.inputcheckbox {
+    font-size: 14px;
+    color: black;
+    height: 20px;
+    width: auto;
+    vertical-align: middle;
+}
+
+input[type='submit'] {
+    top: 30px;
+    width: 80px;
+    height: auto;
+    position: relative;
+    text-align: center;
+}
+
+
+
+
