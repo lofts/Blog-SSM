@@ -14,8 +14,8 @@ public class UserService {
     @Resource
     private IUserDao userDao;
 
-    public User login(String name, String password) {
-        return userDao.login(name, password);
+    public User login(String userName, String password) {
+        return userDao.login(userName, password);
     }
 
     public void register(User user) {

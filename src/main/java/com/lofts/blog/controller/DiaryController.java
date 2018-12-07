@@ -20,6 +20,18 @@ public class DiaryController {
     @Autowired
     private DiaryService diaryService;
 
+    @RequestMapping(value = "/diaryList")
+    private String diaryList(HttpServletRequest request) {
+        List<Diary> list = diaryService.queryAllDiary();
+        request.setAttribute("diarylist", list);
+        return "diarylist";
+    }
+
+    @RequestMapping(value = "/writeDiary")
+    private String writeDiary() {
+        return "writediary";
+    }
+
     @RequestMapping(value = "/addDiary", method = RequestMethod.POST)
     private String addDiary(@RequestParam(value = "title") String title,
                             @RequestParam(value = "type") String type,
@@ -33,20 +45,14 @@ public class DiaryController {
 
         diaryService.addDiary(diary);
 
-        return "forward:/diarylist";
+        return "forward:/diary/diaryList";
     }
 
-
-    @RequestMapping(value = "/queryAllDiary", method = RequestMethod.POST)
-    private void getBirthdayList(HttpServletRequest request) {
-        List<Diary> list = diaryService.queryAllDiary();
-        request.setAttribute("diaryList", list);
-    }
-
-    @RequestMapping(value = "/queryDiarybyId", method = RequestMethod.POST)
-    private void queryDiarybyId(HttpServletRequest request, @RequestParam(value = "id") String id) {
+    @RequestMapping(value = "/queryDiary")
+    private String queryDiary(HttpServletRequest request, @RequestParam(value = "id") String id) {
         Diary diary = diaryService.queryDiarybyId(id);
         request.setAttribute("diary", diary);
+        return "diaryshow";
     }
 
 

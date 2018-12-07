@@ -12,7 +12,8 @@
     <%
         if (session.getAttribute("loginresult") != null) {
     %>
-    <p class="loginresult"><%=session.getAttribute("loginresult") %></p>
+    <p class="loginresult"><%=session.getAttribute("loginresult") %>
+    </p>
     <%
     } else {
     %>
@@ -21,7 +22,7 @@
         }
     %>
 
-    <form action="${pageContext.request.contextPath}/user/login" methon="post" onsubmit="return checkLogin()">
+    <form action="${pageContext.request.contextPath}/user/userLogin" method="post" onsubmit="return checkLogin()">
         <div class="inputitem">
             <input class="input" id="username" name="username" type="text" maxlength="20" placeholder="请输入用户名">
         </div>
@@ -36,7 +37,7 @@
             <input class="loginbutton" name="login" onclick="return checkLogin();" type="submit" value="登录">
         </div>
     </form>
-    <a href="${pageContext.request.contextPath}/login/register" class="rigbutton">用户注册</a>
+    <a href="${pageContext.request.contextPath}/user/register" class="rigbutton">用户注册</a>
     <a href="#" onclick='return alert("敬请期待")' class="forbutton">忘记密码？</a>
 </div>
 </body>
@@ -45,7 +46,7 @@
 
     function refreshVerifyCode() {
         var time = new Date().getTime();
-        document.getElementById("imagecode").src = "<%=request.getContextPath()%>/VerifyCodeServlet?" + time;
+        document.getElementById("imagecode").src = "${pageContext.request.contextPath}/check/getCheckImage?" + time;
     }
 
     function checkLogin() {

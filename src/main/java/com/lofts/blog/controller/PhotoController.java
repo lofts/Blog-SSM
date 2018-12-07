@@ -39,13 +39,19 @@ public class PhotoController {
 
             index++;
         }
+        return "forward:/photo/photoList";
+    }
+
+    @RequestMapping(value = "/photoList")
+    private String photoList(HttpServletRequest request) {
+        List<Photo> list = photoService.queryAllPhoto();
+        request.setAttribute("photolist", list);
         return "photogrid";
     }
 
-    @RequestMapping(value = "/queryAllPhoto", method = RequestMethod.POST)
-    private void queryAllPhoto(HttpServletRequest request) {
-        List<Photo> list = photoService.queryAllPhoto();
-        request.setAttribute("photoList", list);
+    @RequestMapping(value = "/uploadPhoto")
+    private String uploadPhoto(HttpServletRequest request) {
+        return "uploadphoto";
     }
 
 }

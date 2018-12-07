@@ -1,12 +1,13 @@
 package com.lofts.blog.dao;
 
 import com.lofts.blog.model.User;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 public interface IUserDao {
 
-    User login(String name, String password);
+    User login(@Param("username") String username, @Param("password") String password);
 
     void register(User user);
 

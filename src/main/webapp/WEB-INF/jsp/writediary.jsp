@@ -9,8 +9,8 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/diary/css/writediary.css">
-    <script type="text/javascript" src="../js/wangEditor.js"></script>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/writediary.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/wangEditor.js"></script>
 </head>
 <body>
 <div id="writemain">
@@ -19,7 +19,7 @@
         <input type="button" id="publish" value="发表" onclick="publishDiary()"/>
     </div>
     <hr class="headline">
-    <form id="writeform" action="${pageContext.request.contextPath}/AddDiaryServlet" method="post">
+    <form id="writeform" action="${pageContext.request.contextPath}/diary/addDiary" method="post">
         <div class="writediv">
             <span class="tag">标题</span>
             <input type="text" class="inputedit" id="title" name="title" size="40" maxlength="20" placeholder="请输入标题">

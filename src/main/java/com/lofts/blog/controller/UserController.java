@@ -30,29 +30,39 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    private String login(@RequestParam(value = "username") String username,
+    @RequestMapping(value = "/userLogin", method = RequestMethod.POST)
+    private String userLogin(@RequestParam(value = "username") String username,
                          @RequestParam(value = "password") String password,
                          @RequestParam(value = "verifycode") String verifycode) {
 
         String sessionCode = (String) getRequest().getSession().getAttribute("verifycode");
         if (!verifycode.toUpperCase().equals(sessionCode)) {
             getRequest().getSession().setAttribute("loginresult", "验证码错误");
-            return "forward:/login";
+            return "forward:/user/login";
         }
 
         User user = userService.login(username, password);
         if (user != null) {
             getRequest().getSession().setAttribute("user", user);
-            return "main";
+            return "redirect:/main/index";
         } else {
             getRequest().getSession().setAttribute("loginresult", "用户名或密码错误");
-            return "forward:/login";
+            return "forward:/user/login";
         }
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
-    private String register(@RequestParam(value = "username") String username,
+    @RequestMapping(value = "/login")
+    private String login() {
+        return "login";
+    }
+
+    @RequestMapping(value = "/register")
+    private String register() {
+        return "register";
+    }
+
+    @RequestMapping(value = "/addUser", method = RequestMethod.POST)
+    private String addUser(@RequestParam(value = "username") String username,
                             @RequestParam(value = "password") String password,
                             @RequestParam(value = "verifycode") String verifycode) {
 

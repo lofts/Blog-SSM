@@ -1,5 +1,4 @@
-<%@ page import="com.lofts.blog.bean.Diary" %>
-<%@ page import="com.lofts.blog.dao.DiaryDao" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2018/11/14
@@ -10,15 +9,8 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/diary/css/diaryshow.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/diaryshow.css">
 </head>
-
-<%
-    String diaryid = request.getParameter("diaryid");
-    DiaryDao dao = new DiaryDao();
-    Diary diary = dao.queryDiarybyId(diaryid);
-    request.setAttribute("diary", diary);
-%>
 
 <body>
 <div id="writemain">

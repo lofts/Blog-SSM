@@ -10,10 +10,10 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/photo/css/uploadphoto.css">
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.2.1.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/ajaxfileupload.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/layer/layer.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/uploadphoto.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ajaxfileupload.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/layer/layer.js"></script>
 </head>
 <body>
 <div id="uploadmain">
@@ -24,7 +24,7 @@
         <input type="file" id="uploadfile" name="uploadfile" accept="image/jpeg" multiple="multiple" onchange="uploadImage()"/>
     </div>
     <hr class="headline">
-    <form id="photoform" action="${pageContext.request.contextPath}/UploadPhotoServlet" method="post">
+    <form id="photoform" action="${pageContext.request.contextPath}/photo/addPhoto" method="post">
         <div>
             <ul id="photolist">
 
@@ -40,7 +40,7 @@
         layer.load(2);
         $.ajaxFileUpload({
             type: 'POST',
-            url: '${pageContext.request.contextPath}/UploadImageServlet',
+            url: '${pageContext.request.contextPath}/upload/uploadImage',
             secureurl: false,
             fileElementId: 'uploadfile',
             dataType: 'text',

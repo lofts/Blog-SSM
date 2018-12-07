@@ -1,6 +1,4 @@
-<%@ page import="com.lofts.blog.bean.Photo" %>
-<%@ page import="com.lofts.blog.dao.PhotoDao" %>
-<%@ page import="java.util.List" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -13,18 +11,13 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/photo/css/photogrid.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/photogrid.css">
 </head>
 
-<%
-    PhotoDao dao = new PhotoDao();
-    List<Photo> photos = dao.queryAllPhoto();
-    request.setAttribute("photolist", photos);
-%>
 <body>
 <div id="photomain">
     <div id="headdiv">
-        <a id="upload" href="${pageContext.request.contextPath}/photo/uploadphoto.jsp">上传照片</a>
+        <a id="upload" href="${pageContext.request.contextPath}/photo/uploadPhoto">上传照片</a>
     </div>
     <hr class="headline">
     <div>

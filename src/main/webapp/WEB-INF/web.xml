@@ -6,9 +6,9 @@
 
     <display-name>Blog</display-name>
     <description>Blog_0.0.1</description>
-    
+
     <welcome-file-list>
-        <welcome-file>login</welcome-file>
+        <welcome-file>index</welcome-file>
     </welcome-file-list>
 
     <!-- 编码过滤器 -->
@@ -18,6 +18,10 @@
         <init-param>
             <param-name>encoding</param-name>
             <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>  <!--强制使用Encoding设置的编码格式-->
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
         </init-param>
     </filter>
     <filter-mapping>
@@ -41,6 +45,11 @@
         <servlet-name>SpringMVC</servlet-name>
         <!-- 匹配所有请求，此处也可以配置成 *.do 形式 -->
         <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>SpringMVC</servlet-name>
+        <url-pattern>/index</url-pattern>
     </servlet-mapping>
 
 </web-app>

@@ -7,12 +7,12 @@
 </head>
 
 <frameset rows="18%,*" cols="*" frameborder="no" border="0" framespacing="0">
-    <frame src="<%=request.getContextPath()%>/user/maintop.jsp" name="maintop" scrolling="no" noresize="noresize" id="maintop"/>
+    <frame src="${pageContext.request.contextPath}/main/top" name="maintop" scrolling="no" noresize="noresize" id="maintop"/>
     <frameset cols="15%,18%,52%,15%" frameborder="no" border="0" framespacing="0">
-        <frame src="<%=request.getContextPath()%>/user/mainempty.jsp" name="leftempty" scrolling="no" noresize="noresize" id="leftempty"/>
-        <frame src="<%=request.getContextPath()%>/user/mainleft.jsp" name="mainleft" scrolling="no" noresize="noresize" id="mainleft"/>
+        <frame src="${pageContext.request.contextPath}/main/empty" name="leftempty" scrolling="no" noresize="noresize" id="leftempty"/>
+        <frame src="${pageContext.request.contextPath}/main/left" name="mainleft" scrolling="no" noresize="noresize" id="mainleft"/>
         <frame name="maincontent" id="maincontent" target="maincontent" scrolling="yes" noresize="noresize"/>
-        <frame src="<%=request.getContextPath()%>/user/mainempty.jsp" name="rightempty" scrolling="no" noresize="noresize" id="rightempty"/>
+        <frame src="${pageContext.request.contextPath}/main/empty" name="rightempty" scrolling="no" noresize="noresize" id="rightempty"/>
     </frameset>
 </frameset>
 

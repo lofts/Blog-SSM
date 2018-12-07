@@ -5,7 +5,7 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/user/css/main.css" type="text/css"></link>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css" type="text/css"></link>
 </head>
 
 <body id="mainleftbody">

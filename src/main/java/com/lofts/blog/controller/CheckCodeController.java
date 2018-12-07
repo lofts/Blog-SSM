@@ -17,7 +17,7 @@ import java.util.Random;
 @RequestMapping("/check")
 public class CheckCodeController {
 
-    @RequestMapping(value = "/getCheckImage", method = RequestMethod.POST)
+    @RequestMapping(value = "/getCheckImage", method = RequestMethod.GET)
     private void getCheckImage(HttpServletRequest request, HttpServletResponse response) throws IOException {
         // 创建图像缓冲区
         BufferedImage bi = new BufferedImage(165, 40, BufferedImage.TYPE_INT_RGB);
