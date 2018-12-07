@@ -20,11 +20,11 @@ public class AreaService {
     }
 
 
-    List<City> getCityListById(String provinceid) {
+    public List<City> getCityListById(String provinceid) {
         return areaDao.getCityListById(provinceid);
     }
 
-    List<County> getCountyListById(String cityid) {
+    public List<County> getCountyListById(String cityid) {
         return areaDao.getCountyListById(cityid);
     }
 

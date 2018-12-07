@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lofts.blog.dao.IAreaDao">
+
+    <select id="getProvinceList" resultType="com.lofts.blog.model.Province">
+        select *from province
+    </select>
+
+    <select id="getCityListById" resultType="com.lofts.blog.model.City">
+        select *from city where provinceid = #{provinceid}
+    </select>
+
+    <select id="getCountyListById" resultType="com.lofts.blog.model.County">
+        select *from county where cityid = #{cityid}
+    </select>
+
+
+</mapper>

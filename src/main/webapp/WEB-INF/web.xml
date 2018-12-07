@@ -6,10 +6,9 @@
 
     <display-name>Blog</display-name>
     <description>Blog_0.0.1</description>
-
-
+    
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>login</welcome-file>
     </welcome-file-list>
 
     <!-- 编码过滤器 -->

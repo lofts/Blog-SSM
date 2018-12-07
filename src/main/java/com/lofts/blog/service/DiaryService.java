@@ -2,6 +2,7 @@ package com.lofts.blog.service;
 
 import com.lofts.blog.dao.IDiaryDao;
 import com.lofts.blog.model.Diary;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

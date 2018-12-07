@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lofts.blog.dao.IPhotoDao">
+
+    <insert id="addPhoto" keyProperty="id">
+          insert into photo (imagepath,remark,uploaddate) values (#{imagepath},#{remark},#{uploaddate})
+    </insert>
+
+    <select id="queryAllPhoto" resultType="com.lofts.blog.model.Photo">
+          select *from photo
+    </select>
+
+</mapper>

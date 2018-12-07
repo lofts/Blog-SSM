@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>FashionLife登录</title>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/login/css/login.css" type="text/css"></link>
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/login.css" type="text/css"></link>
 </head>
 
 <body>
@@ -21,7 +21,7 @@
         }
     %>
 
-    <form action="<%=request.getContextPath()%>/LoginServlet" methon="post" onsubmit="return checkLogin()">
+    <form action="${pageContext.request.contextPath}/user/login" methon="post" onsubmit="return checkLogin()">
         <div class="inputitem">
             <input class="input" id="username" name="username" type="text" maxlength="20" placeholder="请输入用户名">
         </div>
@@ -30,13 +30,13 @@
         </div>
         <div class="inputitem">
             <input class="verifycode" id="verifycode" name="verifycode" type="text" maxlength="4" placeholder="请输入验证码">
-            <img id="imagecode" src="<%=request.getContextPath()%>/VerifyCodeServlet" onclick="refreshVerifyCode()" alt="验证码"/>
+            <img id="imagecode" src="${pageContext.request.contextPath}/check/getCheckImage" onclick="refreshVerifyCode()" alt="验证码"/>
         </div>
         <div class="inputitem">
             <input class="loginbutton" name="login" onclick="return checkLogin();" type="submit" value="登录">
         </div>
     </form>
-    <a href="<%=request.getContextPath()%>/login/register.jsp" class="rigbutton">用户注册</a>
+    <a href="${pageContext.request.contextPath}/login/register" class="rigbutton">用户注册</a>
     <a href="#" onclick='return alert("敬请期待")' class="forbutton">忘记密码？</a>
 </div>
 </body>
