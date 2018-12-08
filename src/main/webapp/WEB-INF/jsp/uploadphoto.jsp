@@ -21,7 +21,7 @@
         <input type="button" id="back" value="返回" onclick="history.go(-1);"/>
         <input type="button" id="upload" value="上传照片" onclick="uploadPhoto()">
         <input type="button" id="choose" value="选择照片" onclick="choosePhoto()"/>
-        <input type="file" id="uploadfile" name="uploadfile" accept="image/jpeg" multiple="multiple" onchange="uploadImage()"/>
+        <input type="file" id="imagefiles" name="imagefiles" accept="image/jpeg" multiple="multiple" onchange="uploadImage()"/>
     </div>
     <hr class="headline">
     <form id="photoform" action="${pageContext.request.contextPath}/photo/addPhoto" method="post">
@@ -42,7 +42,7 @@
             type: 'POST',
             url: '${pageContext.request.contextPath}/upload/uploadImage',
             secureurl: false,
-            fileElementId: 'uploadfile',
+            fileElementId: 'imagefiles',
             dataType: 'text',
             success: function (response) {
                 var data = response.replace(/<.*?>/ig, "");
@@ -88,7 +88,7 @@
     }
 
     function choosePhoto() {
-        document.getElementById("uploadfile").click();
+        document.getElementById("imagefiles").click();
     }
 
     function uploadPhoto() {

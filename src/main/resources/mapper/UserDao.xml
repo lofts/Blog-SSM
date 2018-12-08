@@ -3,6 +3,17 @@
 
 <mapper namespace="com.lofts.blog.dao.IUserDao">
 
+    <resultMap id="birthdayMap" type="java.lang.String">
+        <result property="value" column="agevalue" javaType="java.lang.String"></result>
+    </resultMap>
+
+    <resultMap id="constellationMap" type="java.lang.String">
+        <result property="value" column="constellation" javaType="java.lang.String"></result>
+    </resultMap>
+
+    <resultMap id="hobbyMap" type="java.lang.String">
+        <result property="value" column="hobbyname" javaType="java.lang.String"></result>
+    </resultMap>
 
     <select id="login" resultType="com.lofts.blog.model.User">
         select *
@@ -41,17 +52,17 @@
         where id = #{id}
     </select>
 
-    <select id="getBirthdayList" resultType="java.lang.String">
+    <select id="getBirthdayList" resultMap="birthdayMap">
         select *
         from birthday
     </select>
 
-    <select id="getConstellationList" resultType="java.lang.String">
+    <select id="getConstellationList" resultMap="constellationMap">
         select *
         from constellation
     </select>
 
-    <select id="getHobbyList" resultType="java.lang.String">
+    <select id="getHobbyList" resultMap="hobbyMap">
         select *
         from hobby
     </select>

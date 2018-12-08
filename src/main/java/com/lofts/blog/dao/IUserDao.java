@@ -13,7 +13,7 @@ public interface IUserDao {
 
     String checkUserName(String userName);
 
-    User saveUserInfo(User user);
+    void saveUserInfo(User user);
 
     User queryUserInfo(int id);
 

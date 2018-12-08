@@ -1,6 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="java.util.List" %>
-<%@ page import="com.lofts.blog.dao.CommonDao" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 
@@ -8,33 +6,23 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/user/css/main.css" type="text/css"></link>
-    <script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
-    <script type="text/javascript" src="../js/ajaxfileupload.js"></script>
-    <script type="text/javascript" src="../layer/layer.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css" type="text/css"></link>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ajaxfileupload.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/layer/layer.js"></script>
 </head>
-
-<%
-    List<String> birthdaylist = CommonDao.getBirthdayList();
-    request.setAttribute("birthdaylist", birthdaylist);
-    List<String> constellationlist = CommonDao.getConstellationList();
-    request.setAttribute("constellationlist", constellationlist);
-    List<String> hobbylist = CommonDao.getHobbyList();
-    request.setAttribute("hobbylist", hobbylist);
-%>
-
 
 <body>
 <div id="maincontent">
-    <form action="${pageContext.request.contextPath}/EditUserInfoServlet" method="post">
+    <form action="${pageContext.request.contextPath}/user/saveUserInfo" method="post">
         <div id="editheaddiv">
-            <c:if test="${empty user}">
-                <img id="headimg" src="<%=request.getContextPath()%>/user/img/img_default_head.jpg">
+            <c:if test="${empty user.headimage}">
+                <img id="headimg" src="${pageContext.request.contextPath}/resources/img/img_default_head.jpg">
             </c:if>
-            <c:if test="${!empty user}">
+            <c:if test="${!empty user.headimage}">
                 <img id="headimg" src="${pageContext.request.contextPath}/${user.headimage}">
             </c:if>
-            <input type="file" id="imagefile" name="imagefile" accept="image/jpeg" onchange="updateImage()">
+            <input type="file" id="imagefiles" name="imagefiles" accept="image/jpeg" onchange="updateImage()">
             <input type="text" id="imagepath" name="imagepath" size="40" value="${user.headimage}" readonly>
             <input type="button" name="upload" class="bluebutton" value="选择图片" onclick="chooseImage()">
         </div>
@@ -110,9 +98,9 @@
         layer.load(2);
         $.ajaxFileUpload({
             type: 'POST',
-            url: '${pageContext.request.contextPath}/UploadImageServlet',
+            url: '${pageContext.request.contextPath}/upload/uploadImage',
             secureurl: false,
-            fileElementId: 'imagefile',
+            fileElementId: 'imagefiles',
             dataType: 'text',
             success: function (response) {
                 var data = response.replace(/<.*?>/ig, "");
@@ -128,12 +116,12 @@
     }
 
     function chooseImage() {
-        document.getElementById("imagefile").click();
+        document.getElementById("imagefiles").click();
     }
 
     function updateImage() {
-        document.getElementById("imagepath").value = document.getElementById("imagefile").value;
-        var file = document.getElementById("imagefile").files[0];
+        document.getElementById("imagepath").value = document.getElementById("imagefiles").value;
+        var file = document.getElementById("imagefiles").files[0];
         var reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = function (ev) {
@@ -146,10 +134,10 @@
     function getProvince() {
         $.ajax({
             type: 'POST',
-            url: '${pageContext.request.contextPath}/CityServlet?type=province',
+            url: '${pageContext.request.contextPath}/area/getProvinceList',
             dateType: 'json',
             success: function (response) {
-                var provinceList = response;
+                var provinceList = JSON.parse(response);
                 var str = '';
                 for (var i = 0; i < provinceList.length; i++) {
                     str += '<option value=' + provinceList[i].provinceid + '>' + provinceList[i].province + '</option>'
@@ -169,10 +157,10 @@
         var provinceId = document.getElementById("province").options[provinceIndex].value;
         $.ajax({
             type: 'POST',
-            url: '${pageContext.request.contextPath}/CityServlet?type=city&lastId=' + provinceId,
+            url: '${pageContext.request.contextPath}/area/getCityList?provinceid=' + provinceId,
             dateType: 'json',
             success: function (response) {
-                var cityList = response;
+                var cityList = JSON.parse(response);
                 var str = '';
                 for (var i = 0; i < cityList.length; i++) {
                     str += '<option value=' + cityList[i].cityid + '>' + cityList[i].city + '</option>'
@@ -192,10 +180,10 @@
         var cityId = document.getElementById("city").options[cityIndex].value;
         $.ajax({
             type: 'POST',
-            url: '${pageContext.request.contextPath}/CityServlet?type=county&lastId=' + cityId,
+            url: '${pageContext.request.contextPath}/area/getCountyList?cityid=' + cityId,
             dateType: 'json',
             success: function (response) {
-                var countyList = response;
+                var countyList = JSON.parse(response);
                 var str = '';
                 for (var i = 0; i < countyList.length; i++) {
                     str += '<option value=' + countyList[i].countyid + '>' + countyList[i].county + '</option>'

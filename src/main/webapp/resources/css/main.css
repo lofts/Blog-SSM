@@ -124,12 +124,12 @@
     padding: 0px;
 }
 
-#imagefile {
+#imagefiles {
     display: none;
     vertical-align: bottom;
 }
 
-#imagepath {
+#imagefiles {
     margin-left: 10px;
     vertical-align: bottom;
     font-size: 14px;

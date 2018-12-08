@@ -61,7 +61,7 @@ public class UserController {
         return "register";
     }
 
-    @RequestMapping(value = "/addUser", method = RequestMethod.POST)
+    @RequestMapping(value = "/addUser")
     private String addUser(@RequestParam(value = "username") String username,
                             @RequestParam(value = "password") String password,
                             @RequestParam(value = "verifycode") String verifycode) {
@@ -89,6 +89,21 @@ public class UserController {
     }
 
 
+    @RequestMapping(value = "/editUser")
+    private String editUser(HttpServletRequest request) {
+        List<String> birthdaylist = userService.getBirthdayList();
+        request.setAttribute("birthdaylist", birthdaylist);
+        List<String> constellationlist = userService.getConstellationList();
+        request.setAttribute("constellationlist", constellationlist);
+        List<String> hobbylist = userService.getHobbyList();
+        request.setAttribute("hobbylist", hobbylist);
+
+        return "edituserinfo";
+    }
+
+
+
+
     @RequestMapping(value = "/saveUserInfo", method = RequestMethod.POST)
     private String saveUserInfo(@RequestParam(value = "imagepath") String imagepath,
                                 @RequestParam(value = "nickname") String nickname,
@@ -96,7 +111,7 @@ public class UserController {
                                 @RequestParam(value = "birthday") String birthday,
                                 @RequestParam(value = "constellation") String constellation,
                                 @RequestParam(value = "hobby") String hobby,
-                                @RequestParam(value = "hobby") String address,
+                                @RequestParam(value = "address") String address,
                                 @RequestParam(value = "email") String email) {
 
         int id = ((User) getRequest().getSession().getAttribute("user")).getId();
@@ -112,34 +127,12 @@ public class UserController {
         user.setEmail(email);
         user.setAddress(address);
 
-        User resultUser = userService.saveUserInfo(user);
-        if (resultUser != null) {
-            getRequest().getSession().setAttribute("user", resultUser);
-            return "dynamiclist";
-        } else {
-            getRequest().getSession().setAttribute("saveResult", "修改失败");
-            return "forword:edituserinfo";
-        }
-    }
+        userService.saveUserInfo(user);
+        User resultUser = userService.queryUserInfo(id);
 
-    @RequestMapping(value = "/getBirthdayList", method = RequestMethod.POST)
-    private void getBirthdayList(HttpServletRequest request) {
-        List<String> list = this.userService.getBirthdayList();
-        request.setAttribute("birthdayList", list);
+        getRequest().getSession().setAttribute("user", resultUser);
+        return "dynamiclist";
     }
-
-    @RequestMapping(value = "/getConstellationList", method = RequestMethod.POST)
-    private void getConstellationList(HttpServletRequest request) {
-        List<String> list = this.userService.getConstellationList();
-        request.setAttribute("constellationList", list);
-    }
-
-    @RequestMapping(value = "/getHobbyList", method = RequestMethod.POST)
-    private void getHobbyList(HttpServletRequest request) {
-        List<String> list = this.userService.getHobbyList();
-        request.setAttribute("hobbyList", list);
-    }
-
 
     private HttpServletRequest getRequest() {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();

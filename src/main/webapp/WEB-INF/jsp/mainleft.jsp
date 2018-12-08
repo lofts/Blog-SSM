@@ -15,9 +15,9 @@
             <img id="headimg" src="${pageContext.request.contextPath}/${user.headimage}">
         </c:if>
         <c:if test="${empty user.headimage}">
-            <img id="headimg" src="<%=request.getContextPath()%>/user/img/img_default_head.jpg">
+            <img id="headimg" src="${pageContext.request.contextPath}/resources/img/img_default_head.jpg">
         </c:if>
-        <a href="<%=request.getContextPath()%>/user/edituserinfo.jsp" target="maincontent">编辑个人信息</a>
+        <a href="<%=request.getContextPath()%>/user/editUser" target="maincontent">编辑个人信息</a>
     </div>
     <div class="userinfo">
         <span class="tag">用户名</span><span class="uservalue">${user.username}</span>

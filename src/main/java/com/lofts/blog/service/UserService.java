@@ -26,8 +26,8 @@ public class UserService {
         return userDao.checkUserName(userName);
     }
 
-    public User saveUserInfo(User user) {
-        return userDao.saveUserInfo(user);
+    public void saveUserInfo(User user) {
+        userDao.saveUserInfo(user);
     }
 
     public User queryUserInfo(int id) {
