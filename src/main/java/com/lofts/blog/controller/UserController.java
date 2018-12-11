@@ -1,6 +1,7 @@
 package com.lofts.blog.controller;
 
 
+import com.alibaba.fastjson.JSON;
 import com.lofts.blog.model.User;
 import com.lofts.blog.service.UserService;
 import com.lofts.blog.utils.DateUtil;
@@ -14,6 +15,9 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 @Controller
@@ -25,8 +29,8 @@ public class UserController {
 
     @RequestMapping(value = "/userLogin", method = RequestMethod.POST)
     private String userLogin(@RequestParam(value = "username") String username,
-                         @RequestParam(value = "password") String password,
-                         @RequestParam(value = "verifycode") String verifycode) {
+                             @RequestParam(value = "password") String password,
+                             @RequestParam(value = "verifycode") String verifycode) {
 
         String sessionCode = (String) getRequest().getSession().getAttribute("verifycode");
         if (!verifycode.toUpperCase().equals(sessionCode)) {
@@ -56,8 +60,8 @@ public class UserController {
 
     @RequestMapping(value = "/addUser")
     private String addUser(@RequestParam(value = "username") String username,
-                            @RequestParam(value = "password") String password,
-                            @RequestParam(value = "verifycode") String verifycode) {
+                           @RequestParam(value = "password") String password,
+                           @RequestParam(value = "verifycode") String verifycode) {
 
         String sessionCode = (String) getRequest().getSession().getAttribute("verifycode");
         if (!verifycode.toUpperCase().equals(sessionCode)) {
@@ -94,7 +98,14 @@ public class UserController {
         return "edituserinfo";
     }
 
+    @RequestMapping(value = "/queryUserInfo", produces = {"text/html;charset=UTF-8;", "application/json;"})
+    private void queryUserInfo(HttpServletResponse response, @RequestParam("id") String id) throws IOException {
+        response.setContentType("text/html;charset-utf-8");
+        PrintWriter out = response.getWriter();
 
+        User user = userService.queryUserInfo(Integer.parseInt(id));
+        out.write(JSON.toJSONString(user));
+    }
 
 
     @RequestMapping(value = "/saveUserInfo", method = RequestMethod.POST)
